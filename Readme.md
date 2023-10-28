@@ -13,7 +13,7 @@ modrinth_challenge <slug>
 ```
 
 Or in an interactive way
-````sh
+```sh
 > modrinth_challenge
 
 Welcome to Modrinth!
@@ -25,4 +25,20 @@ Welcome to Modrinth!
        Description: _
        Downloads: _
        Categories: _, _
+```
+
+## Development
+You need use the variables store in `.env.example` file
+
+
+```sh
+# Loading .env
+> cp .env.example .env
+> source .env
+> cargo run
+```
+
+```sh
+# Set variables
+> LITCRYPT_ENCRYPT_KEY=<value> API_BASE_URL=<value> MODRINTH_API_KEY=<value> cargo run
 ```
