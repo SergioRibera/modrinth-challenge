@@ -25,9 +25,9 @@ async fn main() -> Result<(), MError> {
         loop {
             let slug = ask("Type the project slug", |_s| true)?;
             process(&client, slug).await?;
-            let ok = ask::<MyBool>("Are these keys OK? [Yes|No]", accept)?;
+            let ok = ask::<MyBool>("Want to try another project? [Yes|No]", accept)?;
 
-            if ok.0 {
+            if !ok.0 {
                 break;
             }
         }
