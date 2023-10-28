@@ -1,4 +1,3 @@
-use once_cell::sync::Lazy;
 use reqwest::header::{HeaderMap, HeaderValue};
 use reqwest::{Client, ClientBuilder};
 
@@ -7,7 +6,7 @@ use crate::MODRINTH_API_KEY;
 
 pub mod projects;
 
-pub static API_BASE_URL: Lazy<String> = Lazy::new(|| lc!(macro_env!(File, "API_BASE_URL")));
+pub static API_BASE_URL: &str = env!("API_BASE_URL");
 const APP_USER_AGENT: &str = concat!(
     "SergioRibera",
     env!("CARGO_PKG_NAME"),
@@ -20,9 +19,8 @@ pub fn create_client() -> MResult<Client> {
     headers
         .insert(
             "Authorization",
-            HeaderValue::from_str(MODRINTH_API_KEY.as_str())?,
-        )
-        .unwrap();
+            HeaderValue::from_str(MODRINTH_API_KEY)?,
+        );
 
     Ok(ClientBuilder::new()
         .user_agent(APP_USER_AGENT)

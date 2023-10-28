@@ -7,7 +7,7 @@ use crate::services::API_BASE_URL;
 const BASE_PATH: &str = "/project/";
 
 fn build_url(extra: String) -> String {
-    format!("{}{BASE_PATH}{extra}", API_BASE_URL.as_str())
+    format!("{API_BASE_URL}{BASE_PATH}{extra}")
 }
 
 /// The main idea with separating this by modules is that in each module

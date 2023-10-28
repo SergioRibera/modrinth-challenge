@@ -4,8 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-litcrypt = "0.3.0"
-once_cell = "1.18.0"
 thiserror = "1.0.50"
 reqwest = { version = "0.11.22", features = ["json"] }
 serde = { version = "1.0.190", features = ["derive"] }

@@ -1,7 +1,6 @@
 use std::env;
 
 use error::Modrinth as MError;
-use once_cell::sync::Lazy;
 use reqwest::Client;
 use services::create_client;
 use term::{accept, ask, note, show_project, welcome, MyBool};
@@ -11,12 +10,7 @@ mod models;
 mod services;
 mod term;
 
-#[macro_use]
-extern crate litcrypt;
-
-use_litcrypt!();
-
-pub static MODRINTH_API_KEY: Lazy<String> = Lazy::new(|| lc!(env!("MODRINTH_API_KEY")));
+pub static MODRINTH_API_KEY: &str = env!("MODRINTH_API_KEY");
 
 #[tokio::main]
 async fn main() -> Result<(), MError> {

@@ -383,16 +383,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "da2479e8c062e40bf0066ffa0bc823de0a9368974af99c9f6df941d2c231e03f"
 
 [[package]]
-name = "litcrypt"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5f82f92066d9d41b3a569b459b7874e67feb835507a83b7bd142ea9f56c620c7"
-dependencies = [
- "proc-macro2",
- "quote",
-]
-
-[[package]]
 name = "log"
 version = "0.4.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -435,8 +425,6 @@ name = "modrinth_challenge"
 version = "0.1.0"
 dependencies = [
  "colored",
- "litcrypt",
- "once_cell",
  "reqwest",
  "serde",
  "thiserror",
