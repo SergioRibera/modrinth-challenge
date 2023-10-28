@@ -1,3 +1,50 @@
-fn main() {
-    println!("Hello, world!");
+use std::env;
+
+use error::Modrinth as MError;
+use once_cell::sync::Lazy;
+use reqwest::Client;
+use services::create_client;
+use term::{accept, ask, note, show_project, welcome, MyBool};
+
+mod error;
+mod models;
+mod services;
+mod term;
+
+#[macro_use]
+extern crate litcrypt;
+
+use_litcrypt!();
+
+pub static MODRINTH_API_KEY: Lazy<String> = Lazy::new(|| lc!(env!("MODRINTH_API_KEY")));
+
+#[tokio::main]
+async fn main() -> Result<(), MError> {
+    let client = create_client()?;
+
+    welcome();
+
+    if let Some(slug) = env::args().nth(1) {
+        note("Note: we detect the parameter you shared as argument");
+        process(&client, slug).await?;
+    } else {
+        loop {
+            let slug = ask("Type the project slug", |_s| true)?;
+            process(&client, slug).await?;
+            let ok = ask::<MyBool>("Are these keys OK? [Yes|No]", accept)?;
+
+            if ok.0 {
+                break;
+            }
+        }
+    }
+
+    Ok(())
+}
+
+async fn process(client: &Client, slug: String) -> Result<(), MError> {
+    let project = services::projects::get(client, slug).await?;
+    show_project(&project);
+
+    Ok(())
 }
