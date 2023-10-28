@@ -2,7 +2,10 @@
 In this challenge what I'm taking more time is to decide the dependencies hahahaaha, although this is because I plan to do something a little more interesting what is requested and obviously with scalable and secure code, to really show what I'm capable of, the time it took me to code it can be seen in the delay between each commit, from the initial to the last commit
 
 > [!NOTE]
-> After 2 days of delivering this challenge the project will be OpenSource and will be publicly available on my Github profile.
+> [Here](https://github.com/SergioRibera/modrinth-challenge) you have my repository
+
+> [!WARNING]
+> I used [this](https://docs.modrinth.com/) API
 
 ## How the application works
 This application is planned to work in two ways
