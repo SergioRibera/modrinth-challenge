@@ -43,18 +43,34 @@ pub fn note(n: &str) {
 
 pub fn welcome() {
     print!(
-        "\t\t\t{} to {}",
+        "\t\t\t{} to {}\n\n",
         "Welcome".bold().blue(),
         "modrinth".bold().bright_green()
     );
 }
 
 pub fn show_project(p: &Project) {
-    print!("\n\t\t{} {}", "Name:".bold().white(), p.title);
-    print!("\t\t{} {}", "Description:".bold().white(), p.description);
-    print!("\t\t{} {}", "Downloads:".bold().white(), p.downloads);
     print!(
-        "\t\t{} {}",
+        "\n\t\t{} {} {}",
+        "::".bold().blue(),
+        "Name:".bold().white(),
+        p.title
+    );
+    print!(
+        "\n\t\t{} {} {}",
+        "::".bold().blue(),
+        "Description:".bold().white(),
+        p.description
+    );
+    print!(
+        "\n\t\t{} {} {}",
+        "::".bold().blue(),
+        "Downloads:".bold().white(),
+        p.downloads
+    );
+    print!(
+        "\n\t\t{} {} {}\n",
+        "::".bold().blue(),
         "Categories:".bold().white(),
         p.categories.join(",")
     );
